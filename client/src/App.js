@@ -11,7 +11,7 @@ import FavoriteMovieList from './components/FavoriteMovieList';
 
 import axios from 'axios';
 
-const App = () => {
+const App = (props) => {
   const [movies, setMovies] = useState([]);
   const [favoriteMovies, setFavoriteMovies] = useState([]);
 
@@ -26,6 +26,7 @@ const App = () => {
   }, []);
 
   const deleteMovie = (id)=> {
+    return movies.filter((movie) => movie.id!==id);
   }
 
   const addToFavorites = (movie) => {
@@ -53,7 +54,7 @@ const App = () => {
             </Route>
 
             <Route path="/movies/:id">
-              <Movie/>
+              <Movie deleteMovie={deleteMovie}/>
             </Route>
 
             <Route path="/movies">
