@@ -31,7 +31,7 @@ const Movie = (props) => {
         axios.delete(`http://localhost:5000/api/movies/${id}`)
              .then(res => {
                 console.log(res);
-                deleteMovie(id);
+                props.deleteMovie(id);
                 push('/movies')})
     }
 
